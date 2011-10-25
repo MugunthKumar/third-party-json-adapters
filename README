@@ -1,0 +1,8 @@
+Third Party JSON Adapters for NSJSONSerialization in iOS 5
+----------------------------------------------------------
+
+As most of you know, Apple made their JSON parsing framework as a non-private API in iOS 5.
+
+This class will map the categories on SBJSON to NSJSONSerialization.
+
+Volunteers wanted for writing similar adapters for other frameworks that are slower than NSJSONSerialization
