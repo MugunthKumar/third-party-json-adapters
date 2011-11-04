@@ -27,4 +27,8 @@
 - (id)JSONValue;
 @end
 
+@interface NSData (SBJSONCategories)
+- (id)JSONValue;
+@end
+
 

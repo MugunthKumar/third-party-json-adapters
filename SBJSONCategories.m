@@ -65,3 +65,19 @@
 }
 
 @end
+
+@implementation NSData (SBJSONCategories)
+- (id)JSONValue 
+{
+    NSError *err = nil;
+    id jsonValue = [NSJSONSerialization JSONObjectWithData:self 
+                                                   options:0 
+                                                     error:&err];
+    
+    if(err)
+        NSLog(@"%@", [err description]);
+    
+    return jsonValue;
+}
+
+@end
