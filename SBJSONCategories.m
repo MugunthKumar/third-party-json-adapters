@@ -20,7 +20,7 @@
 
 @implementation NSObject (SBJSONCategories)
 
--(NSString*) jsonWithOption:(int) option
+- (NSString *)jsonWithOption:(int)option
 {
   NSError *err = nil;
   
@@ -28,20 +28,22 @@
                                                  options:option 
                                                    error:&err];
   
-  if(err)
+  if (data == nil)
+  {
     NSLog(@"%@", [err description]);
+    return nil;
+  } 
   
   return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-
 }
 
-- (NSString *)prettyJSON {
-
+- (NSString *)prettyJSON 
+{
   return [self jsonWithOption:NSJSONWritingPrettyPrinted];
 }
 
-- (NSString *)JSONRepresentation {
-  
+- (NSString *)JSONRepresentation 
+{
  return [self jsonWithOption:0];
 }
 
@@ -50,15 +52,15 @@
 
 @implementation NSString (SBJSONCategories)
 
-- (id)JSONValue {
-
+- (id)JSONValue 
+{
   NSError *err = nil;
   NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];  
   id jsonValue = [NSJSONSerialization JSONObjectWithData:data 
                                                  options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves 
                                                    error:&err];
   
-  if(err)
+  if (jsonValue == nil)
     NSLog(@"%@", [err description]);
   
   return jsonValue;
@@ -74,7 +76,7 @@
                                                    options:0 
                                                      error:&err];
     
-    if(err)
+    if (jsonValue == nil)
         NSLog(@"%@", [err description]);
     
     return jsonValue;
